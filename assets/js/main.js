@@ -251,6 +251,82 @@
   }
 
   /* ---------------------------------------------------------
+     邮箱：点击展开 + 复制到剪贴板
+     地址以 base64 存放，源码中不出现明文
+     --------------------------------------------------------- */
+  function decodeValue(raw) {
+    if (!raw) return '';
+    try {
+      var bin = window.atob(raw);
+      if (window.TextDecoder) {
+        var bytes = new Uint8Array(bin.length);
+        for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+        return new window.TextDecoder('utf-8').decode(bytes);
+      }
+      return bin;
+    } catch (e) {
+      return '';
+    }
+  }
+
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text).then(
+        function () { return true; },
+        function () { return false; }
+      );
+    }
+    try {
+      var ta = doc.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.top = '-9999px';
+      ta.style.opacity = '0';
+      doc.body.appendChild(ta);
+      ta.select();
+      var ok = doc.execCommand('copy');
+      doc.body.removeChild(ta);
+      return Promise.resolve(ok);
+    } catch (e) {
+      return Promise.resolve(false);
+    }
+  }
+
+  var mailBtn = doc.getElementById('mailBtn');
+  if (mailBtn) {
+    var mailFull = decodeValue(mailBtn.getAttribute('data-enc'));
+    var mailMasked = $('.masked', mailBtn);
+    var mailHint = $('.mail-hint', mailBtn.parentNode);
+    var mailDefault = mailMasked ? mailMasked.textContent : '';
+    var hintDefault = mailHint ? mailHint.textContent : '';
+    var mailOpen = false;
+    var hintTimer = null;
+
+    if (mailMasked && mailFull) {
+      mailBtn.addEventListener('click', function () {
+        mailOpen = !mailOpen;
+        mailBtn.setAttribute('aria-expanded', mailOpen ? 'true' : 'false');
+        mailBtn.setAttribute('aria-label', mailOpen ? '收起邮箱' : '展开完整邮箱并复制');
+        mailMasked.textContent = mailOpen ? mailFull : mailDefault;
+
+        if (!mailHint) return;
+        window.clearTimeout(hintTimer);
+        if (!mailOpen) {
+          mailHint.textContent = hintDefault;
+          return;
+        }
+        copyText(mailFull).then(function (ok) {
+          mailHint.textContent = ok ? '已复制到剪贴板 · 再次点击收起' : '再次点击收起';
+          hintTimer = window.setTimeout(function () {
+            mailHint.textContent = hintDefault;
+          }, 4000);
+        });
+      });
+    }
+  }
+
+  /* ---------------------------------------------------------
      Hero dot field
      --------------------------------------------------------- */
   var canvas = $('#dotCanvas');
