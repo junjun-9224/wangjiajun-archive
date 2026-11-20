@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="paper">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>駿駿 | 大模型数据质量 · 评测工具 · 全栈落地</title>
+<meta name="description" content="駿駿，贵州大学计算机技术硕士（2027 届）。10 万+ 条大模型训练/微调数据的清洗、标注、质检与验收；浏览器评测工具开发者；黔茶云智慧茶产业平台前后端与小程序开发。">
+<meta name="author" content="駿駿">
+<meta name="theme-color" content="#F3EEE5">
+<meta property="og:type" content="website">
+<meta property="og:title" content="駿駿 | 大模型数据质量 · 评测工具 · 全栈落地">
+<meta property="og:description" content="个人数据档案：10 万+ 条大模型数据的质检与验收、评测流程工具化、全栈项目落地。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%2315120F'/%3E%3Crect x='10' y='10' width='44' height='44' rx='3' fill='none' stroke='%23C8401E' stroke-width='2'/%3E%3Ccircle cx='32' cy='32' r='9' fill='%23C8401E'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#about">跳转到正文</a>
+
+<!-- ================= 导航 ================= -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top" aria-label="回到顶部">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">駿駿</span>
+      <span class="brand-sub">JUNJUN</span>
+    </a>
+
+    <nav class="nav-links" id="navLinks" aria-label="主导航">
+      <a href="#about" data-nav="about"><i>01</i>概览</a>
+      <a href="#timeline" data-nav="timeline"><i>02</i>时间线</a>
+      <a href="#experience" data-nav="experience"><i>03</i>实习</a>
+      <a href="#projects" data-nav="projects"><i>04</i>项目</a>
+      <a href="#skills" data-nav="skills"><i>05</i>能力</a>
+      <a href="#honors" data-nav="honors"><i>06</i>荣誉</a>
+      <a href="#contact" data-nav="contact" class="nav-cta">联系</a>
+    </nav>
+
+    <div class="nav-tools">
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="切换深浅色主题" aria-pressed="false">
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="12" cy="12" r="4.6" fill="none" stroke="currentColor" stroke-width="1.6"/><g stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 2.6v2.6M12 18.8v2.6M2.6 12h2.6M18.8 12h2.6M5.4 5.4l1.8 1.8M16.8 16.8l1.8 1.8M18.6 5.4l-1.8 1.8M7.2 16.8l-1.8 1.8"/></g></svg>
+      </button>
+      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="nav-progress" aria-hidden="true"><span id="progressBar"></span></div>
+</header>
+
+<main id="top">
+
+  <!-- ================= Hero ================= -->
+  <section class="hero" aria-labelledby="heroTitle">
+    <canvas class="hero-canvas" id="dotCanvas" aria-hidden="true"></canvas>
+
+    <div class="hero-grid wrap">
+      <div class="hero-main">
+        <p class="eyebrow">
+          <span class="dot"></span>个人数据档案
+          <span class="sep">/</span>ARCHIVE 2018 — 2027
+        </p>
+
+        <h1 id="heroTitle" class="hero-title">
+          <span class="hero-name">駿駿</span>
+          <span class="hero-en">JUNJUN</span>
+        </h1>
+
+        <p class="hero-roles">
+          <span>大模型数据质量</span><span class="bar">/</span><span>评测流程工具化</span><span class="bar">/</span><span>全栈与 AI 落地</span>
+        </p>
+
+        <p class="hero-lead">
+          贵州大学计算机技术硕士，2027 届。过去一年多我在做同一件事的两端：
+          一端是把 10 万+ 条训练数据判定成“可用”，另一端是写工具让人不必再用肉眼数着链接做评测。
+          模型的上限由数据决定，而数据是否可靠，由流程和标准决定。
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-solid" href="#projects">看项目<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M5 12h13M13 6.5 18.5 12 13 17.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="btn btn-ghost" href="#contact">联系方式</a>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="基本信息">
+        <div class="hc-top">
+          <span>PROFILE</span>
+          <span class="hc-live"><span class="dot"></span>OPEN TO INTERN</span>
+        </div>
+        <dl class="hc-list">
+          <div><dt>学历</dt><dd>硕士在读 · 2027 届</dd></div>
+          <div><dt>院校</dt><dd>贵州大学 · 计算机技术</dd></div>
+          <div><dt>方向</dt><dd>大模型数据 / 评测 / 全栈</dd></div>
+          <div><dt>现居</dt><dd>中国 · 西南</dd></div>
+          <div><dt>意向</dt><dd>成都优先，贵阳 / 重庆可</dd></div>
+          <div><dt>到岗</dt><dd>每周 5 天 · 可连做 6 个月</dd></div>
+        </dl>
+        <div class="hc-foot">
+          <span class="stamp" aria-hidden="true">已核验</span>
+          <span class="hc-note">信息依据本人简历与证书材料整理</span>
+        </div>
+      </aside>
+    </div>
+
+    <div class="hero-stats wrap">
+      <div class="stat">
+        <span class="stat-num" data-count="10" data-suffix="万+">10万+</span>
+        <span class="stat-label">训练 / 微调数据复核</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" data-count="20" data-suffix="+">20+</span>
+        <span class="stat-label">个数据任务交付</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" data-count="95" data-suffix="%+">95%+</span>
+        <span class="stat-label">交付通过率</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" data-count="35" data-suffix=" 项">35 项</span>
+        <span class="stat-label">荣誉与成果记录</span>
+      </div>
+    </div>
+
+    <a class="scroll-cue" href="#about" aria-label="向下滚动">
+      <span>SCROLL</span><i aria-hidden="true"></i>
+    </a>
+  </section>
+
+  <!-- ================= 01 概览 ================= -->
+  <section class="sec" id="about">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <span class="sec-index">01</span>
+        <h2 class="sec-title">概览</h2>
+        <span class="sec-note">OVERVIEW / WHO &amp; WHAT</span>
+      </header>
+
+      <div class="about-grid">
+        <div class="about-copy reveal">
+          <p class="about-lead">
+            我是駿駿。本科在绵阳师范学院读物联网工程，专业前 10%；
+            2024 年进入贵州大学读计算机技术硕士。
+            从硬件链路、服务器运维，一路走到大模型数据与评测。
+          </p>
+          <p>
+            在大模型数据侧，我处理过 20+ 个数据任务、10 万+ 条训练与微调数据，
+            覆盖清洗、标注、质检到交付验收；把交付中反复出现的标注歧义、重复缺陷、返工问题
+            拆成可以写进 SOP 和质检规则的动作。
+          </p>
+          <p>
+            在工具侧，我给多链接评测写了一个浏览器扩展，把“翻飞书表格、逐个开链接、记分、回填”
+            这套手工流程串成一条线；在黔茶云项目里，我从数据表结构写到微信小程序发布，
+            也顺手把品牌视觉统一了。
+          </p>
+          <p class="about-quote">
+            “评测不是给模型打分，是先把‘什么算对’讲清楚。”
+          </p>
+        </div>
+
+        <div class="pillars">
+          <article class="pillar reveal" style="--d:.05s">
+            <span class="pillar-i">01</span>
+            <h3>数据质量治理</h3>
+            <p>SOP 与验收规则迭代、异常样本处理、标注歧义归因、返工闭环。</p>
+            <ul class="pillar-tags"><li>SOP</li><li>质检规则</li><li>样本分析</li></ul>
+          </article>
+          <article class="pillar reveal" style="--d:.12s">
+            <span class="pillar-i">02</span>
+            <h3>评测流程工具化</h3>
+            <p>把重复的人工步骤写成脚本与扩展，减少切页、漏评与顺序出错。</p>
+            <ul class="pillar-tags"><li>Chrome Extension</li><li>自动化脚本</li><li>流程梳理</li></ul>
+          </article>
+          <article class="pillar reveal" style="--d:.19s">
+            <span class="pillar-i">03</span>
+            <h3>全栈与 AI 落地</h3>
+            <p>Node.js 服务端、MySQL / Redis、通义千问 + RAG、微信小程序交付。</p>
+            <ul class="pillar-tags"><li>Express</li><li>RAG</li><li>小程序</li></ul>
+          </article>
+          <article class="pillar reveal" style="--d:.26s">
+            <span class="pillar-i">04</span>
+            <h3>系统与运维底座</h3>
+            <p>监控巡检、备份恢复验证、安全加固、容灾与年度审计准备。</p>
+            <ul class="pillar-tags"><li>Linux</li><li>备份容灾</li><li>故障排查</li></ul>
+          </article>
+        </div>
+      </div>
+
+      <div class="edu-strip reveal">
+        <article class="edu">
+          <div class="edu-time">2024.09 — 2027.06</div>
+          <h3>贵州大学<span>计算机技术 · 硕士</span></h3>
+          <p>研究方向与课程：机器学习、高级软件工程、数据结构、计算机网络、数据库原理、操作系统。</p>
+          <p class="edu-note">在读 · 预计 2027.06 毕业</p>
+        </article>
+        <article class="edu">
+          <div class="edu-time">2018.09 — 2023.06</div>
+          <h3>绵阳师范学院<span>物联网工程 · 本科</span></h3>
+          <p>专业前 10%，平均绩点 3.2/4.0。课程覆盖数据结构、操作系统、数据库、单片机、RFID、Linux 等。</p>
+          <p class="edu-note">工学学士</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 02 时间线 ================= -->
+  <section class="sec sec-alt" id="timeline">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <span class="sec-index">02</span>
+        <h2 class="sec-title">时间线</h2>
+        <span class="sec-note">TIMELINE / 2018 — 2027</span>
+      </header>
+
+      <div class="tl-head reveal">
+        <p class="tl-intro">从物联网的硬件链路，走到大模型的数据链路。点选筛选，或点击任意节点展开细节。</p>
+        <div class="filters" role="tablist" aria-label="时间线筛选">
+          <button class="chip is-on" data-filter="all" role="tab" aria-selected="true">全部</button>
+          <button class="chip" data-filter="edu" role="tab" aria-selected="false">学业</button>
+          <button class="chip" data-filter="intern" role="tab" aria-selected="false">实习</button>
+          <button class="chip" data-filter="project" role="tab" aria-selected="false">项目</button>
+          <button class="chip" data-filter="honor" role="tab" aria-selected="false">荣誉</button>
+        </div>
+      </div>
+
+      <div class="tl" id="timeline2">
+        <div class="tl-rail" aria-hidden="true"><span class="tl-fill" id="tlFill"></span></div>
+
+        <div class="tl-items">
+
+          <article class="tl-item reveal" data-cat="edu">
+            <div class="tl-year"><b>2018</b><span>.09</span></div>
+            <div class="tl-body">
+              <div class="tl-meta"><span class="tl-tag t-edu">学业</span><span class="tl-time">2018.09 — 2023.06</span></div>
+              <h3>绵阳师范学院 · 物联网工程</h3>
+              <p>本科四年，专业前 10%，平均绩点 3.2/4.0。课程横跨硬件与软件：单片机、传感器、RFID、操作系统、数据库、Linux。</p>
+              <p class="tl-extra">在这里第一次把“摄像头采集—无线传输—服务器识别—舵机执行”串成完整链路，也是后来所有工程的起点。</p>
+            </div>
+          </article>
+
+          <article class="tl-item reveal" data-cat="intern">
+            <div class="tl-year"><b>2020</b><span>.07</span></div>
+            <div class="tl-body">
+              <div class="tl-meta"><span class="tl-tag t-intern">实习</span><span class="tl-time">2020.07 — 2020.09</span></div>
+              <h3>中国联通绵阳分公司 · 销售组长（首期）</h3>
+              <p>校园业务推广与团队推进，第一次接触“业绩数据”与“转化台账”这件事。</p>
+              <p class="tl-extra">个人完成 100+ 单，业绩排名第一，同时统筹约 20 人团队的任务分配。这段经历让我习惯用表格盯指标。</p>
+            </div>
+          </article>
+
+          <article class="tl-item reveal" data-cat="project">
+            <div class="tl-year"><b>2020</b><span>.09</span></div>
+            <div class="tl-body">
+              <div class="tl-meta"><span class="tl-tag t-project">项目</span><span class="tl-time">2020.09 — 2022.12</span></div>
+              <h3>改良辅助型单杠 · 项目负责人</h3>
+              <p>针对公园、学校、社区健身场景的结构改良，完成方案、图纸与推广可行性分析。</p>
+              <p class="tl-extra">大学生创新创业训练计划：省级立项结题、校级立项结题。</p>
+            </div>
+          </article>
+
+          <article class="tl-item reveal" data-cat="project">
+            <div class="tl-year"><b>2021</b><span>.09</span></div>
+            <div class="tl-body">
+              <div class="tl-meta"><span class="tl-tag t-project">项目</span><span class="tl-time">2021.09 — 2022.10</span></div>
+              <h3>自动瞄准系统 · 项目负责人</h3>
+              <p>摄像头采集 → ESP8266 传输 → 服务器 YOLO 识别 → 坐标回传 → Arduino / 舵机执行，外加 Qt 客户端与多模块联调。</p>
+              <p class="tl-extra">“互联网+”校级金奖起步，最终拿到省级铜奖；衍生出 RFID / ZigBee 智能泊车识别模块。</p>
+            </div>
+          </article>
+
+          <article class="tl-item reveal" data-cat="honor">
+            <div class="tl-year"><b>2022</b><span>.05</span></div>
+            <div class="tl-body">
+              <div class="tl-meta"><span class="tl-tag t-honor">荣誉</span><span class="tl-time">2022.05 — 2023.03</span></div>
+              <h3>蓝桥杯省三 · 三创赛校二 · 数学竞赛全国三等奖</h3>
+              <p>第十三届蓝桥杯 C/C++ 大学 B 组四川赛区三等奖；三创赛校级二等奖与最佳创新奖；第十四届全国大学生数学竞赛（非数学类）三等奖。</p>
+              <p class="tl-extra">同年取得《基于神经网络的图像识别系统 V1.0.1》软件著作权（2022SR1381683，共同著作权人）。</p>
+            </div>
+          </article>
+
+          <article class="tl-item reveal" data-cat="intern">
+            <div class="tl-year"><b>2023</b><span>.03</span></div>
+            <div class="tl-body">
+              <div class="tl-meta"><span class="tl-tag t-intern">实习</span><span class="tl-time">2023.03 — 2023.06</span></div>
+              <h3>上海利柏特建设有限公司 · 系统运维工程师</h3>
+              <p>服务器与业务系统的日常运维：监控、巡检、备份、故障排查与恢复验证。</p>
+              <p class="tl-extra">编写自动化脚本替代重复性巡检与备份操作；参与系统安全加固、数据容灾与年度安全审计准备。</p>
+            </div>
+          </article>
+
+          <article class="tl-item reveal" data-cat="edu">
+            <div class="tl-year"><b>2024</b><span>.09</span></div>
+            <div class="tl-body">
+              <div class="tl-meta"><span class="tl-tag t-edu">学业</span><span class="tl-time">2024.09 — 2027.06</span></div>
+              <h3>贵州大学 · 计算机技术（硕士）</h3>
+              <p>研究方向与课程：机器学习、高级软件工程、数据结构、计算机网络、数据库原理、操作系统。</p>
+              <p class="tl-extra">硕士期间获三等奖学金、入学教育优秀学员；在党委组织部担任助管，参与校园安全系列活动组织工作。</p>
+            </div>
+          </article>
+
+          <article class="tl-item reveal" data-cat="intern">
+            <div class="tl-year"><b>2025</b><span>.06</span></div>
+            <div class="tl-body">
+              <div class="tl-meta"><span class="tl-tag t-intern">实习</span><span class="tl-time">2025.06 — 2026.08</span></div>
+              <h3>大模型数据训练与数据标注评测</h3>
+              <p>20+ 个数据任务、10 万+ 条训练 / 微调数据，覆盖清洗、标注、质检与交付验收。</p>
+              <p class="tl-extra">迭代标注 SOP 与质检规则，推动标注歧义、重复缺陷、返工问题闭环；任务准确率 90%+、交付通过率 95%+。</p>
+            </div>
+          </article>
+
+          <article class="tl-item reveal" data-cat="intern">
+            <div class="tl-year"><b>2026</b><span>.01</span></div>
+            <div class="tl-body">
+              <div class="tl-meta"><span class="tl-tag t-intern">实习</span><span class="tl-time">2026.01 — 2026.09</span></div>
+              <h3>贵州健信安科技有限公司 · 模型训练师</h3>
+              <p>参与抖音大模型训练数据标注，负责多模态专家团（VLM）数据与前端项目筛选的质量初筛，累计处理标注任务数万条。</p>
+              <p class="tl-extra">主导新项目试标：按甲方业务流程与操作规范完成规则理解、样本试标与反馈迭代，为项目正式启动提供数据质量基准。</p>
+            </div>
+          </article>
+
+          <article class="tl-item reveal" data-cat="project">
+            <div class="tl-year"><b>2026</b><span>.03</span></div>
+            <div class="tl-body">
+              <div class="tl-meta"><span class="tl-tag t-project">项目</span><span class="tl-time">2026.03 — 2026.09</span></div>
+              <h3>云锦黔茶 · 智慧茶产业数字化平台</h3>
+              <p>面向贵州夏秋茶的数字化服务与电商场景：官网前端、Node.js / Express 服务端、MySQL + Redis、Socket.IO，以及基于通义千问 + RAG 的三类 AI 服务。</p>
+              <p class="tl-extra">负责微信小程序编写与发布、公众号内容与 Logo 设计。项目获第十五届“挑战杯”贵州省赛二等奖（团队第 3 署名）。</p>
+            </div>
+          </article>
+
+          <article class="tl-item reveal" data-cat="project">
+            <div class="tl-year"><b>2026</b><span>.06</span></div>
+            <div class="tl-body">
+              <div class="tl-meta"><span class="tl-tag t-project">项目</span><span class="tl-time">2026.06 — 2026.07</span></div>
+              <h3>大模型多链接评测辅助工具</h3>
+              <p>用 JavaScript、HTML/CSS 与 Chrome Extension API 写了一个 Edge / Chrome 扩展，解析飞书表格剪贴板，按序打开模型链接。</p>
+              <p class="tl-extra">A/B 评分、完成度判断、备注编辑、进度同步、结果复制、页面状态清理，六个动作替代原来的反复切页。</p>
+            </div>
+          </article>
+
+          <article class="tl-item reveal" data-cat="edu">
+            <div class="tl-year"><b>2027</b><span>.06</span></div>
+            <div class="tl-body">
+              <div class="tl-meta"><span class="tl-tag t-edu">学业</span><span class="tl-time">预计 2027.06</span></div>
+              <h3>硕士毕业 · 寻找下一段</h3>
+              <p>希望进入大模型评测、AI 数据质量或相关工程岗位，继续做“让数据可信”这件事。</p>
+              <p class="tl-extra">当前可实习：每周 5 天，可连续 6 个月，可尽快到岗。</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 03 实习 ================= -->
+  <section class="sec" id="experience">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <span class="sec-index">03</span>
+        <h2 class="sec-title">实习经历</h2>
+        <span class="sec-note">EXPERIENCE / 4 RECORDS</span>
+      </header>
+
+      <div class="exp-list">
+
+        <article class="exp reveal" style="--d:.04s">
+          <div class="exp-left">
+            <div class="exp-time">2026.01 — 2026.09</div>
+            <div class="exp-co">贵州健信安科技有限公司</div>
+            <div class="exp-role">模型训练师 · 技术部</div>
+          </div>
+          <div class="exp-right">
+            <ul class="exp-points">
+              <li>参与抖音大模型训练数据标注，负责<b>多模态专家团（VLM）数据</b>与前端项目筛选的质量初筛，累计处理标注任务数万条。</li>
+              <li>主导新项目试标：依据甲方业务流程与操作规范完成规则理解、样本试标与反馈迭代，为项目正式启动提供<b>数据质量基准</b>。</li>
+              <li>协助团队完成数据统计、文件整理与资料归档，按业务节奏灵活调整工作内容。</li>
+            </ul>
+            <div class="exp-stats">
+              <span><b>数万条</b>标注任务</span>
+              <span><b>VLM</b>多模态数据</span>
+              <span><b>试标</b>质量基准</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="exp reveal" style="--d:.08s">
+          <div class="exp-left">
+            <div class="exp-time">2025.06 — 2026.08</div>
+            <div class="exp-co">大模型数据训练与数据标注评测</div>
+            <div class="exp-role">大模型数据质量 · 产教融合创新实践基地</div>
+          </div>
+          <div class="exp-right">
+            <ul class="exp-points">
+              <li>累计参与 <b>20+ 个数据任务</b>，处理与复核 <b>10 万+ 条</b>大模型训练 / 微调数据，覆盖清洗、标注、质检与交付验收。</li>
+              <li>结合交付问题优化标注 SOP、质检规则与异常样本处理流程，推动标注歧义、重复缺陷和返工问题闭环。</li>
+              <li>协同算法工程师完成样本分析与效果验证，相关任务<b>准确率 90%+</b>、<b>交付通过率 95%+</b>，为模型调优提供稳定数据支撑。</li>
+              <li>参与 webdev、webdebug、前端产物筛选等项目评测，处理相关数据 10w+；参与超能 rubric 需求拆解分析。</li>
+            </ul>
+            <div class="exp-stats">
+              <span><b>10 万+</b>条数据</span>
+              <span><b>90%+</b>准确率</span>
+              <span><b>95%+</b>交付通过</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="exp reveal" style="--d:.12s">
+          <div class="exp-left">
+            <div class="exp-time">2023.03 — 2023.06</div>
+            <div class="exp-co">上海利柏特建设有限公司</div>
+            <div class="exp-role">系统运维工程师 · 技术部</div>
+          </div>
+          <div class="exp-right">
+            <ul class="exp-points">
+              <li>负责服务器及业务系统日常运维，执行监控、巡检、备份、故障排查与恢复验证，保障系统稳定运行。</li>
+              <li>编写自动化脚本辅助重复性巡检和备份操作，降低人工巡检的遗漏风险。</li>
+              <li>参与系统安全加固、数据容灾及年度安全审计准备。</li>
+            </ul>
+            <div class="exp-stats">
+              <span><b>监控巡检</b>例行化</span>
+              <span><b>脚本</b>替代手工</span>
+              <span><b>容灾</b>与审计</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="exp reveal" style="--d:.16s">
+          <div class="exp-left">
+            <div class="exp-time">2020.07 — 2020.09<br>2021.06 — 2021.09</div>
+            <div class="exp-co">中国联通绵阳分公司</div>
+            <div class="exp-role">销售组长 / 业务数据运营（两期）</div>
+          </div>
+          <div class="exp-right">
+            <ul class="exp-points">
+              <li>负责校园业务推广并统筹约 <b>20 人团队</b>任务推进，个人完成 <b>100+ 单</b>，个人业绩排名第一。</li>
+              <li>维护客户转化与业务数据台账，分析核心指标并优化标准流程，把销售话术与经验整理成可复用条目。</li>
+              <li>配合技术部门开展业务系统测试、问题反馈与需求优化。</li>
+            </ul>
+            <div class="exp-stats">
+              <span><b>100+</b>单 / 业绩第一</span>
+              <span><b>约 20 人</b>团队统筹</span>
+              <span><b>台账</b>与指标分析</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 04 项目 ================= -->
+  <section class="sec sec-alt" id="projects">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <span class="sec-index">04</span>
+        <h2 class="sec-title">项目</h2>
+        <span class="sec-note">PROJECTS / 4 MAIN + EARLY WORK</span>
+      </header>
+
+      <div class="pgrid">
+
+        <article class="pcard pcard-wide reveal" data-project="tea" style="--d:.04s">
+          <div class="pc-head">
+            <span class="pc-no">P.01</span>
+            <span class="pc-period">2026.03 — 2026.09</span>
+          </div>
+          <h3 class="pc-title">云锦黔茶<br><span>智慧茶产业数字化平台</span></h3>
+          <p class="pc-role">前后端 / 小程序开发 / 视觉设计 · 核心成员（第 3 署名）</p>
+          <p class="pc-desc">面向贵州夏秋茶的数字化服务与电商场景，我的分工从数据库表结构一直覆盖到小程序发布。</p>
+          <ul class="pc-tags"><li>Node.js</li><li>Express</li><li>MySQL</li><li>Redis</li><li>Socket.IO</li><li>通义千问 + RAG</li><li>微信小程序</li></ul>
+          <div class="pc-foot">
+            <span class="pc-award">第十五届“挑战杯”贵州省赛 二等奖</span>
+            <button class="pc-more" type="button" data-open="tea" aria-label="查看云锦黔茶项目详情">展开<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button>
+          </div>
+          <template id="detail-tea">
+            <h3>云锦黔茶 · 智慧茶产业数字化平台</h3>
+            <p class="d-sub">2026.03 — 2026.09 · 核心成员（第 3 署名）· 前后端 / 小程序 / 视觉</p>
+            <h4>背景</h4>
+            <p>贵州茶园面积居全国前列，但夏秋茶长期存在“没人用、没法用、用不了”的问题。项目希望用数字化手段把夏秋茶的采摘、加工、分级销售与技术指导串起来，让夏秋茶有稳定的去处。</p>
+            <h4>我做了什么</h4>
+            <ul>
+              <li><b>前端与官网</b>：完成官网前端页面搭建，保持多端一致的品牌视觉与信息层级。</li>
+              <li><b>服务端</b>：基于 Node.js / Express 搭建服务，实现用户认证、商品、购物车 / 订单与 AI 对话接口，接入 MySQL 连接池、Redis 缓存与 Socket.IO。</li>
+              <li><b>数据设计</b>：设计用户、商品、订单、AI 对话及 RAG 知识库等数据表结构。</li>
+              <li><b>AI 服务</b>：基于通义千问 API + RAG 实现茶学问答、茶农咨询与智能导购三类服务。</li>
+              <li><b>多端交付</b>：完成微信小程序编写与发布、公众号内容发布及项目 Logo 设计。</li>
+            </ul>
+            <h4>结果</h4>
+            <p>项目获第十五届“挑战杯”中国大学生创业计划竞赛贵州省赛二等奖；同一项目获贵州大学校内选拔赛二等奖、中国国际大学生创新大赛（2026）贵州大学校赛银奖。</p>
+            <h4>待补充</h4>
+            <p>小程序名称与线上体验入口、官网访问地址、RAG 知识库规模与召回效果数据 —— 相关材料未随简历提供。</p>
+          </template>
+        </article>
+
+        <article class="pcard reveal" data-project="ext" style="--d:.1s">
+          <div class="pc-head">
+            <span class="pc-no">P.02</span>
+            <span class="pc-period">2026.06 — 2026.07</span>
+          </div>
+          <h3 class="pc-title">大模型多链接评测<br><span>辅助工具（浏览器扩展）</span></h3>
+          <p class="pc-role">主要开发者</p>
+          <p class="pc-desc">评测时要在几十个模型链接之间来回切、逐个记分、再回填表格。这个扩展把这条路径压成一条流水线。</p>
+          <ul class="pc-tags"><li>JavaScript</li><li>Chrome Extension API</li><li>飞书表格</li></ul>
+          <div class="pc-foot">
+            <span class="pc-award">替代反复切页与手工回填</span>
+            <button class="pc-more" type="button" data-open="ext" aria-label="查看评测扩展详情">展开<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button>
+          </div>
+          <template id="detail-ext">
+            <h3>大模型多链接评测辅助工具</h3>
+            <p class="d-sub">2026.06 — 2026.07 · 主要开发者 · Edge / Chrome 扩展</p>
+            <h4>要解决的问题</h4>
+            <p>多链接评测的原始流程是：从飞书表格复制一批模型链接 → 逐个粘贴打开 → 对比两个模型输出打分 → 记录完成度与备注 → 回到表格回填。链接一多，顺序容易错、页面容易串、记录容易漏。</p>
+            <h4>实现</h4>
+            <ul>
+              <li>解析飞书表格剪贴板内容，按原始顺序批量打开模型链接。</li>
+              <li>A/B 双栏评分与完成度判断，备注可就地编辑。</li>
+              <li>进度同步：知道当前评到第几条，避免漏评与重复评。</li>
+              <li>结果一键复制回表格，并提供页面状态清理，减少上一轮残留干扰。</li>
+            </ul>
+            <h4>结果</h4>
+            <p>把“预览—记录—回填”串成连续动作，降低人工切换与顺序出错风险，评测过程可复现。</p>
+            <h4>待补充</h4>
+            <p>扩展的安装包或商店链接、评测效率提升的量化对比数据 —— 材料中未记录。</p>
+          </template>
+        </article>
+
+        <article class="pcard reveal" data-project="data" style="--d:.16s">
+          <div class="pc-head">
+            <span class="pc-no">P.03</span>
+            <span class="pc-period">2025.06 — 2026.08</span>
+          </div>
+          <h3 class="pc-title">大模型训练数据<br><span>质量体系与评测</span></h3>
+          <p class="pc-role">大模型数据质量</p>
+          <p class="pc-desc">不是“标完就算”，而是让同一批数据换个人来判，结论依然一致。规则、样本、返工，三件事反复对齐。</p>
+          <ul class="pc-tags"><li>SOP 迭代</li><li>质检规则</li><li>异常样本</li><li>rubric 拆解</li></ul>
+          <div class="pc-foot">
+            <span class="pc-award">准确率 90%+ / 交付通过率 95%+</span>
+            <button class="pc-more" type="button" data-open="data" aria-label="查看数据质量体系详情">展开<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button>
+          </div>
+          <template id="detail-data">
+            <h3>大模型训练数据质量体系与评测</h3>
+            <p class="d-sub">2025.06 — 2026.08 · 大模型数据质量 · 产教融合创新实践基地</p>
+            <h4>范围</h4>
+            <p>20+ 个数据任务、10 万+ 条训练 / 微调数据，覆盖清洗、标注、质检与交付验收；参与 webdev、webdebug、前端产物筛选等项目评测与超能 rubric 需求拆解分析。</p>
+            <h4>做法</h4>
+            <ul>
+              <li><b>规则先行</b>：把“什么算合格”写成可判定的验收条目，减少标注员的自由解释空间。</li>
+              <li><b>歧义归因</b>：把交付中被退回的样本按歧义类型归类（规则不清 / 边界样本 / 重复缺陷），反推是规则问题还是执行问题。</li>
+              <li><b>闭环返工</b>：异常样本单独建池，返工前后各抽检一次，确认问题不再复发。</li>
+              <li><b>效果验证</b>：协同算法工程师做样本分析与效果验证，让数据改动能看到模型侧的变化。</li>
+            </ul>
+            <h4>结果</h4>
+            <p>相关任务准确率 90%+、交付通过率 95%+，为模型调优提供稳定数据支撑。</p>
+            <h4>待补充</h4>
+            <p>各任务的具体条数分布、SOP 版本迭代次数与 A/B 提升幅度 —— 属项目内部数据，未在材料中保留。</p>
+          </template>
+        </article>
+
+        <article class="pcard pcard-wide reveal" data-project="aim" style="--d:.22s">
+          <div class="pc-head">
+            <span class="pc-no">P.04</span>
+            <span class="pc-period">2021.09 — 2022.10</span>
+          </div>
+          <h3 class="pc-title">自动瞄准系统<br><span>与智能泊车衍生项目</span></h3>
+          <p class="pc-role">项目负责人</p>
+          <p class="pc-desc">摄像头采集 → ESP8266 传输 → 服务器 YOLO 识别 → 坐标回传 → Arduino / 舵机执行，一条端到端的硬件 + 算法链路。</p>
+          <ul class="pc-tags"><li>YOLO</li><li>ESP8266</li><li>Arduino</li><li>Qt</li><li>RFID / ZigBee</li></ul>
+          <div class="pc-foot">
+            <span class="pc-award">“互联网+”省铜 · 三创赛校二 + 最佳创新</span>
+            <button class="pc-more" type="button" data-open="aim" aria-label="查看自动瞄准系统详情">展开<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button>
+          </div>
+          <template id="detail-aim">
+            <h3>基于神经网络、ESP8266 与 Arduino 的自动瞄准系统</h3>
+            <p class="d-sub">2021.09 — 2022.10 · 项目负责人 · 团队 1—10 人</p>
+            <h4>系统构成</h4>
+            <p>摄像头负责采集，ESP8266 负责无线传输，服务器用 YOLO 识别人体头部位置，坐标回传给 ESP，再由 Arduino 驱动舵机转动对准；配套 Qt 客户端用于状态查看与参数调整，图像处理部分基于开源库完成。</p>
+            <h4>我的职责</h4>
+            <ul>
+              <li>项目策划与整体框架：确定采集—传输—识别—执行的分工与接口。</li>
+              <li>云平台 / 服务器侧搭建与联调，串联摄像头、ESP8266、服务器与舵机多个模块。</li>
+              <li>细节优化与答辩材料，推动项目从立项走到参赛与结题。</li>
+            </ul>
+            <h4>成果</h4>
+            <ul>
+              <li>第八届四川省国际“互联网+”大学生创新创业大赛 <b>省级铜奖</b>；第七届校级金奖。</li>
+              <li>衍生项目《基于 RFID 和 ZigBee 的智能泊车识别模块》获三创赛校级二等奖、最佳创新奖，并申请实用新型专利。</li>
+              <li>作为共同著作权人取得《基于神经网络的图像识别系统 V1.0.1》计算机软件著作权（登记号 2022SR1381683）。</li>
+            </ul>
+            <h4>待补充</h4>
+            <p>实用新型专利号与授权状态、识别准确率与响应延迟等实测指标 —— 材料中未记录具体数值。</p>
+          </template>
+        </article>
+
+      </div>
+
+      <div class="early reveal">
+        <h3 class="early-title">早期实践 <span>/ EARLY WORK</span></h3>
+        <ul class="early-list">
+          <li><b>改良辅助型单杠</b><span>项目负责人 · 2020.09 — 2022.12</span><em>大创省级立项结题、校级立项结题</em></li>
+          <li><b>Linux + OpenWrt WiFi 智能小车</b><span>程序开发 · 2020.07 — 2021.02</span><em>C 语言 + Qt 服务端 + Linux 多线程</em></li>
+          <li><b>基于 Linux 的智能家居系统</b><span>程序开发 · 2020.07 — 2021.02</span><em>Linux 多线程通讯，华清远见实训</em></li>
+          <li><b>绵阳市志愿者协会</b><span>活动负责人 · 2021.03 — 2022.12</span><em>累计志愿服务 161 小时</em></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 05 能力 ================= -->
+  <section class="sec" id="skills">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <span class="sec-index">05</span>
+        <h2 class="sec-title">能力</h2>
+        <span class="sec-note">CAPABILITY / TOOLCHAIN</span>
+      </header>
+
+      <div class="pipe reveal">
+        <div class="pipe-step">
+          <span class="pipe-i">01</span>
+          <h4>读规则</h4>
+          <p>把甲方规范翻译成可判定的条目，标出边界与歧义。</p>
+        </div>
+        <div class="pipe-arrow" aria-hidden="true"></div>
+        <div class="pipe-step">
+          <span class="pipe-i">02</span>
+          <h4>试标</h4>
+          <p>小批量样本先跑一遍，暴露规则漏洞，形成质量基准。</p>
+        </div>
+        <div class="pipe-arrow" aria-hidden="true"></div>
+        <div class="pipe-step">
+          <span class="pipe-i">03</span>
+          <h4>全量与质检</h4>
+          <p>清洗、标注、抽检并行，异常样本单独建池。</p>
+        </div>
+        <div class="pipe-arrow" aria-hidden="true"></div>
+        <div class="pipe-step">
+          <span class="pipe-i">04</span>
+          <h4>验收与闭环</h4>
+          <p>对齐准确率与通过率，返工后复检，规则回写 SOP。</p>
+        </div>
+      </div>
+
+      <div class="skill-grid">
+        <article class="skill reveal" style="--d:.04s">
+          <h3>大模型数据</h3>
+          <p class="skill-note">主力方向</p>
+          <ul class="tags">
+            <li>数据清洗</li><li>标注质检</li><li>SOP 优化</li><li>验收规则</li>
+            <li>异常样本分析</li><li>评测结果整理</li><li>问题闭环</li><li>VLM 数据</li><li>rubric 拆解</li>
+          </ul>
+        </article>
+
+        <article class="skill reveal" style="--d:.1s">
+          <h3>全栈与 AI 服务</h3>
+          <p class="skill-note">项目落地</p>
+          <ul class="tags">
+            <li>Node.js</li><li>Express</li><li>Socket.IO</li><li>MySQL</li><li>Redis</li>
+            <li>JWT</li><li>通义千问 API</li><li>RAG</li><li>HTML5</li><li>Tailwind CSS</li>
+            <li>JavaScript</li><li>微信小程序</li>
+          </ul>
+        </article>
+
+        <article class="skill reveal" style="--d:.16s">
+          <h3>开发与数据</h3>
+          <p class="skill-note">日常工具</p>
+          <ul class="tags">
+            <li>Python</li><li>C / C++</li><li>SQL 基础</li><li>Chrome Extension</li>
+            <li>Excel 数据透视表</li><li>常用函数</li><li>数据可视化</li>
+          </ul>
+        </article>
+
+        <article class="skill reveal" style="--d:.22s">
+          <h3>系统与测试</h3>
+          <p class="skill-note">工程底座</p>
+          <ul class="tags">
+            <li>Linux</li><li>服务器运维</li><li>业务系统运维</li><li>功能测试</li>
+            <li>需求梳理</li><li>缺陷定位</li><li>备份与容灾</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="cert-row reveal">
+        <span class="cert-label">证书与其他</span>
+        <ul class="cert-list">
+          <li>普通话水平测试 二级甲等</li>
+          <li>计算机软件著作权 2022SR1381683（共同著作权人）</li>
+          <li>实用新型专利（智能泊车识别模块，申请中）<sup>待补充专利号</sup></li>
+          <li>大学英语四级（CET-4）</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 06 荣誉 ================= -->
+  <section class="sec sec-alt" id="honors">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <span class="sec-index">06</span>
+        <h2 class="sec-title">荣誉</h2>
+        <span class="sec-note">HONORS / 35 RECORDS</span>
+      </header>
+
+      <div class="honor-top">
+        <article class="honor hi reveal" style="--d:.03s">
+          <span class="h-level">国家级奖学金</span>
+          <h3>国家励志奖学金</h3>
+          <p>2020—2021 学年 · 四川省教育厅</p>
+          <span class="h-year">2021.12</span>
+        </article>
+        <article class="honor hi reveal" style="--d:.08s">
+          <span class="h-level">全国性学科竞赛</span>
+          <h3>全国大学生数学竞赛<br>（非数学类）三等奖</h3>
+          <p>第十四届 · 中国数学会</p>
+          <span class="h-year">2023.03</span>
+        </article>
+        <article class="honor hi reveal" style="--d:.13s">
+          <span class="h-level">省级 · 创业计划竞赛</span>
+          <h3>“挑战杯”贵州省赛<br>二等奖</h3>
+          <p>第十五届 · 团队第 3 署名 · 云锦黔茶</p>
+          <span class="h-year">2026.05</span>
+        </article>
+        <article class="honor hi reveal" style="--d:.18s">
+          <span class="h-level">省级 · 创新创业</span>
+          <h3>四川省国际“互联网+”<br>大学生创新创业大赛 铜奖</h3>
+          <p>第八届 · 四川省教育厅</p>
+          <span class="h-year">2022.12</span>
+        </article>
+      </div>
+
+      <div class="honor-sub">
+        <article class="honor reveal" style="--d:.04s">
+          <span class="h-level">国家级赛事省级赛区</span>
+          <h3>蓝桥杯 C/C++ 大学 B 组 三等奖</h3>
+          <p>第十三届 · 四川赛区</p>
+        </article>
+        <article class="honor reveal" style="--d:.08s">
+          <span class="h-level">省级</span>
+          <h3>四川省大学生综合素质 A 级证书</h3>
+          <p>共青团四川省委、四川省学生联合会</p>
+        </article>
+        <article class="honor reveal" style="--d:.12s">
+          <span class="h-level">校级</span>
+          <h3>贵州大学硕士研究生三等奖学金</h3>
+          <p>2024—2025 学年</p>
+        </article>
+        <article class="honor reveal" style="--d:.16s">
+          <span class="h-level">校级</span>
+          <h3>专业一等奖学金</h3>
+          <p>2020—2021 学年第二学期 · 绵阳师范学院</p>
+        </article>
+        <article class="honor reveal" style="--d:.2s">
+          <span class="h-level">校级</span>
+          <h3>“互联网+”创新创业大赛 金奖</h3>
+          <p>第七届 · 绵阳师范学院</p>
+        </article>
+        <article class="honor reveal" style="--d:.24s">
+          <span class="h-level">校级</span>
+          <h3>中国国际大学生创新大赛校赛 银奖</h3>
+          <p>2026 · 贵州大学创新创业学院</p>
+        </article>
+      </div>
+
+      <details class="honor-all reveal">
+        <summary>
+          <span>查看全部 35 项记录</span>
+          <span class="sum-hint">按阶段分组 · 名称与日期已对照证书原件校对</span>
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 9.5 12 15.5 18 9.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </summary>
+        <div class="honor-tables">
+          <div class="htable-block">
+            <h4>本科阶段 <span>2018 — 2023 · 23 项</span></h4>
+            <ol class="htable">
+              <li><time>2021.12</time><span>国家励志奖学金（2020—2021 学年）</span><em>国家级</em></li>
+              <li><time>2023.03</time><span>第十四届全国大学生数学竞赛（非数学类）三等奖</span><em>国家级</em></li>
+              <li><time>2022.05</time><span>第十三届蓝桥杯 C/C++ 程序设计大学 B 组 四川赛区三等奖</span><em>省级</em></li>
+              <li><time>2022.12</time><span>第八届四川省国际“互联网+”大学生创新创业大赛 铜奖</span><em>省级</em></li>
+              <li><time>2022.06</time><span>四川省大学生综合素质 A 级证书</span><em>省级</em></li>
+              <li><time>2020.12</time><span>第七届中西部外语翻译大赛 英语非专业组 省级优秀奖</span><em>省级</em></li>
+              <li><time>2020.12</time><span>普通话水平测试 二级甲等</span><em>省级</em></li>
+              <li><time>2022.09</time><span>计算机软件著作权《基于神经网络的图像识别系统 V1.0.1》</span><em>版权局</em></li>
+              <li><time>2020.12</time><span>“善行 100 先锋志愿者”证书</span><em>基金会</em></li>
+              <li><time>2021.10</time><span>专业一等奖学金（2020—2021 学年第二学期）</span><em>校级</em></li>
+              <li><time>2022.09</time><span>专业二等奖学金（2021—2022 学年）</span><em>校级</em></li>
+              <li><time>2021.04</time><span>专业二等奖学金（2020—2021 学年第一学期）</span><em>校级</em></li>
+              <li><time>2021.09</time><span>第七届绵阳师范学院“互联网+”创新创业大赛 金奖</span><em>校级</em></li>
+              <li><time>2022.02</time><span>三好学生</span><em>校级</em></li>
+              <li><time>2021.05</time><span>优秀共青团干部（2020—2021 学年度）</span><em>校级</em></li>
+              <li><time>2022.05</time><span>优秀共青团员</span><em>校级</em></li>
+              <li><time>2021.05</time><span>信息技术编程大赛 二等奖</span><em>校级</em></li>
+              <li><time>2021.10</time><span>优秀志愿者（疫情防控志愿服务）</span><em>市级</em></li>
+              <li><time>2021.07</time><span>暑期实习活动答辩 第一名</span><em>院级</em></li>
+              <li><time>2021.06</time><span>期末表彰大会 二等奖</span><em>院级</em></li>
+              <li><time>2021.04</time><span>第十九届田径运动会 30×50m 接力 第二名</span><em>校级</em></li>
+              <li><time>2022.06</time><span>绵阳师范学院创新学院 结业证书</span><em>院级</em></li>
+              <li><time>2022.06</time><span>创新技能证书</span><em>院级</em></li>
+            </ol>
+          </div>
+          <div class="htable-block">
+            <h4>研究生阶段 <span>2024 — 2026 · 12 项</span></h4>
+            <ol class="htable" start="24">
+              <li><time>2026.05</time><span>第十五届“挑战杯”贵州省大学生创业计划竞赛 二等奖</span><em>省级</em></li>
+              <li><time>2025.11</time><span>贵州大学硕士研究生三等奖学金（2024—2025 学年）</span><em>校级</em></li>
+              <li><time>2026.08</time><span>中国国际大学生创新大赛（2026）贵州大学校赛 银奖</span><em>校级</em></li>
+              <li><time>2026.05</time><span>“挑战杯”贵州大学校内选拔赛 二等奖</span><em>校级</em></li>
+              <li><time>2026.07</time><span>研究生助管系列活动 先进个人</span><em>校级</em></li>
+              <li><time>2026.06</time><span>校园安全情景剧大赛 三等奖</span><em>校级</em></li>
+              <li><time>2026.07</time><span>校园安全宣传教育系列活动（第一学期）优秀工作者</span><em>校级</em></li>
+              <li><time>2026.08</time><span>校园安全宣传教育系列活动（第二学期）优秀工作者</span><em>校级</em></li>
+              <li><time>2025.06</time><span>第二届实验室安全情景剧大赛 优秀工作者</span><em>校级</em></li>
+              <li><time>2025.03</time><span>“校园安全”系列活动（安全教育）先进个人</span><em>校级</em></li>
+              <li><time>2025.03</time><span>“校园安全”系列活动（日常安全工作）优秀工作者</span><em>校级</em></li>
+              <li><time>2024.09</time><span>2024 级研究生入学教育 优秀学员</span><em>校级</em></li>
+            </ol>
+
+            <div class="h-extra">
+              <h5>佐证材料</h5>
+              <p>35 项记录中，25 项已备电子证书（前 10 项按优先级编号归档）。其余 10 项（如专业二等奖学金、创新学院结业证书、暑期实习答辩等）暂无电子件，可按需补拍或到学院调档。</p>
+              <p>另有三创赛校级二等奖 / 最佳创新奖、大学生创新创业训练计划结题证书、互联网+特训班培训证书，未计入以上 35 项，可另行提供。</p>
+            </div>
+          </div>
+        </div>
+        <p class="honor-foot">说明：以上记录依据本人整理的三梯队荣誉清单（共 35 项）与证书原件编写；部分校级证书暂无电子件，名称与日期以清单为准。</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ================= 07 联系 ================= -->
+  <section class="sec contact" id="contact">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <span class="sec-index">07</span>
+        <h2 class="sec-title">联系</h2>
+        <span class="sec-note">CONTACT / OPEN TO WORK</span>
+      </header>
+
+      <div class="contact-grid">
+        <div class="contact-main reveal">
+          <h3 class="contact-big">如果你正在找人<br>把“数据到底行不行”讲清楚</h3>
+          <p class="contact-desc">2027 届硕士，寻找大模型评测、AI 数据质量、数据生产与相关工程岗位的实习或校招机会。成都优先，贵阳 / 重庆可；每周 5 天，可连续 6 个月。</p>
+
+          <div class="contact-items">
+            <div class="citem">
+              <span class="citem-label">GitHub</span>
+              <a class="citem-value" href="https://github.com/junjun-9224" target="_blank" rel="noopener noreferrer">github.com/junjun-9224</a>
+            </div>
+            <div class="citem">
+              <span class="citem-label">本站源码</span>
+              <a class="citem-value" href="https://github.com/junjun-9224/wangjiajun-archive" target="_blank" rel="noopener noreferrer">junjun-9224 / wangjiajun-archive</a>
+            </div>
+            <div class="citem">
+              <span class="citem-label">现居</span>
+              <span class="citem-value static">中国 · 西南地区</span>
+            </div>
+            <div class="citem">
+              <span class="citem-label">联系</span>
+              <span class="citem-value static muted">通过 GitHub 私信或 Issues 留言，简历与联系方式请另行索取</span>
+            </div>
+          </div>
+
+          <div class="contact-actions">
+            <a class="btn btn-solid" href="#projects">再逛一遍项目</a>
+            <a class="btn btn-ghost" href="#top">回到顶部</a>
+          </div>
+        </div>
+
+        <aside class="contact-card reveal" style="--d:.1s">
+          <div class="cc-title">求职意向</div>
+          <dl class="cc-list">
+            <div><dt>岗位</dt><dd>大模型评测 / AI 数据质量 / 数据生产 / 全栈开发</dd></div>
+            <div><dt>城市</dt><dd>成都优先，贵阳 / 重庆可</dd></div>
+            <div><dt>类型</dt><dd>实习 / 2027 届校招</dd></div>
+            <div><dt>到岗</dt><dd>可尽快到岗 · 每周 5 天 · 6 个月</dd></div>
+            <div><dt>学历</dt><dd>硕士在读（2027.06 毕业）</dd></div>
+          </dl>
+          <div class="cc-seal" aria-hidden="true"><span>駿駿</span><em>2027</em></div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-inner">
+    <div class="foot-left">
+      <span class="brand-name">駿駿</span>
+      <span class="foot-sub">大模型数据质量 · 评测工具 · 全栈落地</span>
+    </div>
+    <div class="foot-right">
+      <p>本站内容依据本人简历、证书与项目材料整理，未作虚构；标注<i class="todo">待补充</i>处暂无材料佐证。</p>
+      <p class="foot-copy">© <span id="year">2026</span> 駿駿 · 保留所有权利</p>
+    </div>
+  </div>
+</footer>
+
+<!-- 项目详情弹层 -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-panel" role="document">
+    <button class="modal-close" type="button" data-close aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+    </button>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
